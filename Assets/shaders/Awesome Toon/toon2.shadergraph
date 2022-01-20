@@ -139,27 +139,13 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
-                    "m_Id": "72958f8657224b5ba74e02cdce17a185"
-                },
-                "m_SlotId": 2
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "e6a8b032e8cf4d4eb6244bbf8f73567a"
-                },
-                "m_SlotId": 0
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
                     "m_Id": "8ff1947a8049478392b946928af21561"
                 },
                 "m_SlotId": 2
             },
             "m_InputSlot": {
                 "m_Node": {
-                    "m_Id": "72958f8657224b5ba74e02cdce17a185"
+                    "m_Id": "e6a8b032e8cf4d4eb6244bbf8f73567a"
                 },
                 "m_SlotId": 0
             }
@@ -332,8 +318,6 @@
         "m_GuidSerialized": "d90f50e2-b986-4d26-aba5-0fec40c67998"
     },
     "m_Name": "scale",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "scale",
     "m_DefaultReferenceName": "scale",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
@@ -675,8 +659,6 @@
         "m_GuidSerialized": "165b923b-9d2a-4465-9e14-3a3f80f161b4"
     },
     "m_Name": "shading gradient",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "shading gradient",
     "m_DefaultReferenceName": "shading_gradient",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
@@ -908,8 +890,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 1062.0,
-            "y": 238.0,
+            "x": 1106.0001220703125,
+            "y": 473.00006103515627,
             "width": 208.0,
             "height": 302.0
         }
@@ -1210,8 +1192,6 @@
         "m_GuidSerialized": "33935835-3423-45a6-8a96-4fc1277b4c50"
     },
     "m_Name": "Light 1 Dir",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Light 1 Dir",
     "m_DefaultReferenceName": "Light_1_Dir",
     "m_OverrideReferenceName": "_L1_dir",
     "m_GeneratePropertyBlock": true,
@@ -1283,8 +1263,6 @@
         "m_GuidSerialized": "8926c4d1-70b0-4ffe-957b-814ac75acc63"
     },
     "m_Name": "Light 1 Color",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Light 1 Color",
     "m_DefaultReferenceName": "Light_1_Color",
     "m_OverrideReferenceName": "_L1_color",
     "m_GeneratePropertyBlock": true,
