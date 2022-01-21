@@ -151,7 +151,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.22152013, g: 0.23160656, b: 0.3584906, a: 1}
+  m_Color: {r: 0.9716981, g: 0, b: 0.109244406, a: 1}
   m_Intensity: 200
   m_Range: 77.1
   m_SpotAngle: 30
@@ -331,7 +331,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_color: {r: 6e-45, g: 6e-45, b: 8e-45, a: 0.89166373}
+    - _L1_color: {r: 2.4e-44, g: 0, b: 3e-45, a: 0.89166373}
     - _L1_dir: {r: 0.41740984, g: 0.39256525, b: 0.8195496, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
@@ -878,7 +878,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_color: {r: 1.2792349, g: 1.337482, b: 2.0702121, a: 0.64119285}
+    - _L1_color: {r: 5.611364, g: 0, b: 0.63086474, a: 0.64119285}
     - _L1_dir: {r: 0.16075721, g: 0.9839543, b: -0.07740128, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
