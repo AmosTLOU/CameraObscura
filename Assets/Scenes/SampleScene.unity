@@ -331,8 +331,8 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_color: {r: 1.9226201e-34, g: 0, b: 2.1615299e-35, a: 0.49981883}
-    - _L1_dir: {r: 0.1454426, g: 0.13678575, b: 0.9798654, a: 0}
+    - _L1_color: {r: 2.5e-44, g: 0, b: 3e-45, a: 0.89166373}
+    - _L1_dir: {r: 0.41740984, g: 0.39256525, b: 0.8195496, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
 --- !u!1 &871660741
@@ -1033,15 +1033,15 @@ PrefabInstance:
     - target: {fileID: -6471036689783332660, guid: 997aea2277288cb4ca7100c74085a8bc, type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 2100000, guid: 3232b1dea2cd5f849800e02c3aff64a0, type: 2}
+      objectReference: {fileID: 2096576082}
     - target: {fileID: -6471036689783332660, guid: 997aea2277288cb4ca7100c74085a8bc, type: 3}
       propertyPath: m_Materials.Array.data[3]
       value: 
-      objectReference: {fileID: 2100000, guid: 3232b1dea2cd5f849800e02c3aff64a0, type: 2}
+      objectReference: {fileID: 2096576082}
     - target: {fileID: -6471036689783332660, guid: 997aea2277288cb4ca7100c74085a8bc, type: 3}
       propertyPath: m_Materials.Array.data[4]
       value: 
-      objectReference: {fileID: 2100000, guid: 3232b1dea2cd5f849800e02c3aff64a0, type: 2}
+      objectReference: {fileID: 2096576082}
     - target: {fileID: -1131699013787393635, guid: 997aea2277288cb4ca7100c74085a8bc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.02
