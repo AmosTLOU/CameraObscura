@@ -18,6 +18,6 @@ public class CameraInterfaceDisplay : MonoBehaviour
     void Update()
     {
         TimeAndDate.text = System.DateTime.Now.ToString();
-        IndicatorZoom.value = (InstanceCameraControl.MaxFOV - Camera.main.fieldOfView) / (InstanceCameraControl.MaxFOV - InstanceCameraControl.MinFOV);
+        IndicatorZoom.value = (InstanceCameraControl.maxFOV - Camera.main.fieldOfView) / (InstanceCameraControl.maxFOV - InstanceCameraControl.minFOV);
     }
 }
