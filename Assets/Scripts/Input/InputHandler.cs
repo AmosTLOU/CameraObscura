@@ -26,17 +26,15 @@ public class InputHandler : MonoBehaviour
     {
         if (port.IsOpen && port.BytesToRead > 32)
         {
-            print("PORT OPEN!!!!!!");
             try
             {
                 string input = port.ReadLine();
                 var inputMeta = input.Split(':');
                 SetInputData(inputMeta);
-                print(input);
             }
             catch (System.Exception ex)
             {
-                print(ex.Message);
+                print("Could not read from serial port: " + ex.Message);
             }
         }
     }
