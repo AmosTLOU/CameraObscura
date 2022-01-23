@@ -8,7 +8,7 @@ public class CameraInterfaceDisplay : MonoBehaviour
 {
     public TextMeshProUGUI TimeAndDate;
     public Slider IndicatorZoom;
-    public CameraControl instanceCameraControl;
+    public CameraControl InstanceCameraControl;
 
     void Start()
     {
@@ -18,6 +18,6 @@ public class CameraInterfaceDisplay : MonoBehaviour
     void Update()
     {
         TimeAndDate.text = System.DateTime.Now.ToString();
-        IndicatorZoom.value = (instanceCameraControl.maxFOV - Camera.main.fieldOfView) / (instanceCameraControl.maxFOV - instanceCameraControl.minFOV);
+        IndicatorZoom.value = (InstanceCameraControl.MaxFOV - Camera.main.fieldOfView) / (InstanceCameraControl.MaxFOV - InstanceCameraControl.MinFOV);
     }
 }
