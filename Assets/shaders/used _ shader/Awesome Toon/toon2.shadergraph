@@ -425,8 +425,6 @@
         "m_GuidSerialized": "d90f50e2-b986-4d26-aba5-0fec40c67998"
     },
     "m_Name": "scale",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "scale",
     "m_DefaultReferenceName": "scale",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
@@ -841,8 +839,6 @@
         "m_GuidSerialized": "c56730f4-6471-42fa-8873-f7dd2d812e5d"
     },
     "m_Name": "Texture2D",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Texture2D",
     "m_DefaultReferenceName": "_Texture2D",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
@@ -942,8 +938,6 @@
         "m_GuidSerialized": "165b923b-9d2a-4465-9e14-3a3f80f161b4"
     },
     "m_Name": "shading gradient",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "shading gradient",
     "m_DefaultReferenceName": "shading_gradient",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
@@ -1852,8 +1846,6 @@
         "m_GuidSerialized": "33935835-3423-45a6-8a96-4fc1277b4c50"
     },
     "m_Name": "Light 1 Dir",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Light 1 Dir",
     "m_DefaultReferenceName": "Light_1_Dir",
     "m_OverrideReferenceName": "_L1_dir",
     "m_GeneratePropertyBlock": true,
@@ -1961,8 +1953,6 @@
         "m_GuidSerialized": "8926c4d1-70b0-4ffe-957b-814ac75acc63"
     },
     "m_Name": "Light 1 Color",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Light 1 Color",
     "m_DefaultReferenceName": "Light_1_Color",
     "m_OverrideReferenceName": "_L1_color",
     "m_GeneratePropertyBlock": true,
@@ -1987,8 +1977,6 @@
         "m_GuidSerialized": "2eb13bbd-8520-48ce-8f46-bcf2f841eabf"
     },
     "m_Name": "Color",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Color",
     "m_DefaultReferenceName": "_Color",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
