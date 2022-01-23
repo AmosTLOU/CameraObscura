@@ -893,8 +893,6 @@
         "m_GuidSerialized": "54a0a92a-d7b0-4527-bf0e-a8a56aef4179"
     },
     "m_Name": "Light3 Dir",
-    "m_DefaultRefNameVersion": 0,
-    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Vector3_63007FF7",
     "m_OverrideReferenceName": "_L3_dir",
     "m_GeneratePropertyBlock": true,
@@ -1133,8 +1131,6 @@
         "m_GuidSerialized": "90d268fa-7c91-4637-b7c3-1ff271337ee2"
     },
     "m_Name": "Light1 Color",
-    "m_DefaultRefNameVersion": 0,
-    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Color_896A34A0",
     "m_OverrideReferenceName": "_L1_color",
     "m_GeneratePropertyBlock": true,
@@ -1183,8 +1179,6 @@
         "m_GuidSerialized": "21132e7b-83a7-4880-8378-c3926c2fb2ca"
     },
     "m_Name": "Shading Blacks",
-    "m_DefaultRefNameVersion": 0,
-    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Color_9A9462B",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
@@ -1222,8 +1216,6 @@
         "m_GuidSerialized": "cbf10307-e32d-4458-bff4-f3a72ec47fdc"
     },
     "m_Name": "Fresnel Angle",
-    "m_DefaultRefNameVersion": 0,
-    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Vector1_3C3B6420",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
@@ -1724,8 +1716,6 @@
         "m_GuidSerialized": "2b0fedff-551b-44a2-8295-d92a6597cad6"
     },
     "m_Name": "Texture2D",
-    "m_DefaultRefNameVersion": 0,
-    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Texture2D_DB342F0C",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
@@ -1817,8 +1807,6 @@
         "m_GuidSerialized": "caea8481-3c0d-4baa-b728-09e02fea2a79"
     },
     "m_Name": "Gloss intensity",
-    "m_DefaultRefNameVersion": 0,
-    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Color_D840FCE7",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
@@ -2522,8 +2510,6 @@
         "m_GuidSerialized": "aed8cff2-338d-4bb9-a4b7-6109d8eb01de"
     },
     "m_Name": "Light4 Dir",
-    "m_DefaultRefNameVersion": 0,
-    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Vector3_F3543185",
     "m_OverrideReferenceName": "_L4_dir",
     "m_GeneratePropertyBlock": true,
@@ -2547,8 +2533,6 @@
         "m_GuidSerialized": "adb26d73-b143-434f-8206-b28256a2c1a6"
     },
     "m_Name": "Shading Gradient",
-    "m_DefaultRefNameVersion": 0,
-    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Texture2D_97C8EC94",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
@@ -2610,8 +2594,6 @@
         "m_GuidSerialized": "cc2a4964-45d0-4e47-8b3a-569293a295ce"
     },
     "m_Name": "Light4 Color",
-    "m_DefaultRefNameVersion": 0,
-    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Color_755A72E1",
     "m_OverrideReferenceName": "_L4_color",
     "m_GeneratePropertyBlock": true,
@@ -2983,8 +2965,6 @@
         "m_GuidSerialized": "2044f8ca-8982-4c4e-b2c0-40f8a6ca11f4"
     },
     "m_Name": "Light6 Dir",
-    "m_DefaultRefNameVersion": 0,
-    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Vector3_5DB67B0A",
     "m_OverrideReferenceName": "_L6_dir",
     "m_GeneratePropertyBlock": true,
@@ -3369,8 +3349,6 @@
         "m_GuidSerialized": "e48e84f1-e83e-426b-bf7e-21d3bb8b752b"
     },
     "m_Name": "Fresnel Intensity",
-    "m_DefaultRefNameVersion": 0,
-    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Color_D2A04608",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
@@ -3755,8 +3733,6 @@
         "m_GuidSerialized": "f0b49a02-adf6-4c3c-b0d3-c353ccaab38d"
     },
     "m_Name": "Light5 Dir",
-    "m_DefaultRefNameVersion": 0,
-    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Vector3_298FF11",
     "m_OverrideReferenceName": "_L5_dir",
     "m_GeneratePropertyBlock": true,
@@ -4465,8 +4441,6 @@
         "m_GuidSerialized": "d8fcfd54-1af2-4444-ab46-cc66e097c4dd"
     },
     "m_Name": "Shading Whites",
-    "m_DefaultRefNameVersion": 0,
-    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Color_6C9C775A",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
@@ -4619,8 +4593,6 @@
         "m_GuidSerialized": "61e7a3db-c79a-4851-9ff2-6f55d19c2fb7"
     },
     "m_Name": "Fresnel Size",
-    "m_DefaultRefNameVersion": 0,
-    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Vector1_9605CCA4",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
@@ -4890,8 +4862,6 @@
         "m_GuidSerialized": "0b249e8c-d4ea-4dfc-b8ef-50bd93defc4a"
     },
     "m_Name": "Light2 Color",
-    "m_DefaultRefNameVersion": 0,
-    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Color_8D4B9409",
     "m_OverrideReferenceName": "_L2_color",
     "m_GeneratePropertyBlock": true,
@@ -4916,8 +4886,6 @@
         "m_GuidSerialized": "7ea3f54e-8e48-4b72-8b6f-5c52d2dc06a9"
     },
     "m_Name": "Light6 Color",
-    "m_DefaultRefNameVersion": 0,
-    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Color_C3721EB1",
     "m_OverrideReferenceName": "_L6_color",
     "m_GeneratePropertyBlock": true,
@@ -5309,8 +5277,6 @@
         "m_GuidSerialized": "c80cdcc7-c7bc-4ccd-9b1c-7409dc864fc6"
     },
     "m_Name": "Light3 Color",
-    "m_DefaultRefNameVersion": 0,
-    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Color_23F7932E",
     "m_OverrideReferenceName": "_L3_color",
     "m_GeneratePropertyBlock": true,
@@ -5335,8 +5301,6 @@
         "m_GuidSerialized": "7a29b926-7f17-4cd4-9528-9b14bac7bf03"
     },
     "m_Name": "Light1 Dir",
-    "m_DefaultRefNameVersion": 0,
-    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Vector3_E9D67B",
     "m_OverrideReferenceName": "_L1_dir",
     "m_GeneratePropertyBlock": true,
@@ -5481,8 +5445,6 @@
         "m_GuidSerialized": "72311251-febf-448b-986a-da861c8dc050"
     },
     "m_Name": "Light5 Color",
-    "m_DefaultRefNameVersion": 0,
-    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Color_C7E9FC4",
     "m_OverrideReferenceName": "_L5_color",
     "m_GeneratePropertyBlock": true,
@@ -5592,8 +5554,6 @@
         "m_GuidSerialized": "996e7f17-8f35-43a5-9c3b-9bd7670f47fc"
     },
     "m_Name": "Light2 Dir",
-    "m_DefaultRefNameVersion": 0,
-    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Vector3_AAD6F232",
     "m_OverrideReferenceName": "_L2_dir",
     "m_GeneratePropertyBlock": true,
@@ -5642,8 +5602,6 @@
         "m_GuidSerialized": "51bb370a-1f10-4d9f-8582-48832c333288"
     },
     "m_Name": "Gloss size",
-    "m_DefaultRefNameVersion": 0,
-    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Vector1_1DEF9DF4",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
@@ -6099,8 +6057,6 @@
         "m_GuidSerialized": "a6f9fd80-9f19-4bff-995f-54993c5bdbdc"
     },
     "m_Name": "Color",
-    "m_DefaultRefNameVersion": 0,
-    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Color_6A162E48",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
