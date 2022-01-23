@@ -36,7 +36,7 @@ public class InputHandler : MonoBehaviour
             }
             catch (System.Exception ex)
             {
-
+                print(ex.Message);
             }
         }
     }
