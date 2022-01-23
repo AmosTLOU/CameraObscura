@@ -1947,9 +1947,9 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "r": 0.0,
-        "g": 0.0,
-        "b": 0.0,
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
         "a": 0.0
     },
     "m_ColorMode": 0
@@ -2683,10 +2683,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 50.00001907348633,
-            "y": 402.0,
+            "x": 50.000003814697269,
+            "y": 393.0000305175781,
             "width": 208.0,
-            "height": 437.0
+            "height": 434.0000305175781
         }
     },
     "m_Slots": [
