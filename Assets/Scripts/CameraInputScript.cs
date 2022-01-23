@@ -9,7 +9,7 @@ public class CameraInputScript : MonoBehaviour
     // Defines how close the evidence should be to center of the screen for detection
     // 0 -> okay if close to the edges ; 1 -> must be at the center
     [Range(0,1)]
-    public float evidenceDetectArea;
+    public float EvidenceDetectArea;
 
     void Update()
     {

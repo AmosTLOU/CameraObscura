@@ -4,26 +4,26 @@ using UnityEngine;
 
 public class ClueScript : MonoBehaviour
 {
-    public bool isClueDetectionEnabled;
-    public float maxFOV;
+    public bool IsClueDetectionEnabled;
+    public float MaxFOV;
 
-    Camera mainCamera;
-    Vector3 viewportCoords;
-    CameraInputScript cameraInput;
+    Camera _mainCamera;
+    Vector3 _viewportCoords;
+    CameraInputScript _cameraInput;
 
     void Start()
     {
-        mainCamera = Camera.main;
-        cameraInput = FindObjectOfType<CameraInputScript>();
+        _mainCamera = Camera.main;
+        _cameraInput = FindObjectOfType<CameraInputScript>();
     }
 
     public void CheckIfClueCaptured()
     {
-        viewportCoords = mainCamera.WorldToViewportPoint(transform.position);
-        if(isClueDetectionEnabled && mainCamera.fieldOfView < maxFOV)
+        _viewportCoords = _mainCamera.WorldToViewportPoint(transform.position);
+        if(IsClueDetectionEnabled && _mainCamera.fieldOfView < MaxFOV)
         {
-            if (viewportCoords.x > cameraInput.evidenceDetectArea/2 && viewportCoords.x < (1 - cameraInput.evidenceDetectArea/2) &&
-                viewportCoords.y > cameraInput.evidenceDetectArea/2 && viewportCoords.y < (1 - cameraInput.evidenceDetectArea/2))
+            if (_viewportCoords.x > _cameraInput.EvidenceDetectArea/2 && _viewportCoords.x < (1 - _cameraInput.EvidenceDetectArea/2) &&
+                _viewportCoords.y > _cameraInput.EvidenceDetectArea/2 && _viewportCoords.y < (1 - _cameraInput.EvidenceDetectArea/2))
             {
                 Debug.Log("Clue '" + gameObject.name + "' captured");
             }
