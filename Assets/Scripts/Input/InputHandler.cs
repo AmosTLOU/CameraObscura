@@ -5,12 +5,14 @@ using System.IO.Ports;
 
 public class InputHandler : MonoBehaviour
 {
-    [SerializeField] private float pitch = 0f;
-    [SerializeField] private float roll = 0f;
-    [SerializeField] private float yaw = 0f;
+    [SerializeField] private float currentPitch = 0f;
+    [SerializeField] private float currentRoll = 0f;
+    [SerializeField] private float currentYaw = 0f;
     [SerializeField] private float distance = 0f;
     [SerializeField] private bool isFlashButtonDown = false;
     [SerializeField] private bool isShutterButtonDown = false;
+
+    private float prevPitch, prevRoll, prevYaw, prevDistance;
 
     SerialPort port = new SerialPort("COM3", 115200);
     void Start()
@@ -41,12 +43,12 @@ public class InputHandler : MonoBehaviour
 
     public Vector3 GetRotationValues()
     {
-        return new Vector3(pitch, roll, yaw);
+        return new Vector3(currentPitch-prevPitch, currentRoll-prevRoll, currentYaw-prevYaw);
     }
 
     public float GetZoomValue()
     {
-        return distance;
+        return distance-prevDistance;
     }
 
     private void SetInputData(string[] inputMeta)
@@ -64,15 +66,19 @@ public class InputHandler : MonoBehaviour
                 }
                 break;
             case "Pitch":
-                pitch = float.Parse(inputMeta[1]);
+                prevPitch = currentPitch;
+                currentPitch = float.Parse(inputMeta[1]);
                 break;
             case "Roll":
-                roll = float.Parse(inputMeta[1]);
+                prevRoll = currentRoll;
+                currentRoll = float.Parse(inputMeta[1]);
                 break;
             case "Yaw":
-                yaw = float.Parse(inputMeta[1]);
+                prevYaw = currentYaw;
+                currentYaw = float.Parse(inputMeta[1]);
                 break;
             case "Distance":
+                prevDistance = distance;
                 distance = float.Parse(inputMeta[1]);
                 break;
             default:
