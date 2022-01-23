@@ -69,6 +69,5 @@ public class CameraControl : MonoBehaviour
         transform.eulerAngles = _camRot;
         transform.position = _camPos;
         Camera.main.fieldOfView = _camFOV;
-        
     }
 }
