@@ -5,26 +5,32 @@ using UnityEngine;
 public class ClueScript : MonoBehaviour
 {
     public bool IsClueDetectionEnabled;
-    public float MaxFOV;
+    public float MaxDetectFOV;
+    // Defines how close the evidence should be to center of the screen for detection
+    // 0 -> must be at the center; 1 -> okay if close to the edges 
+    [Range(0, 1)]
+    public float EvidenceDetectArea;
 
-    Camera _mainCamera;
-    Vector3 _viewportCoords;
-    CameraInputScript _cameraInput;
+    GameManager _gameManager;
+    Camera _mainCamera;    
 
     void Start()
     {
+        _gameManager = FindObjectOfType<GameManager>();
         _mainCamera = Camera.main;
-        _cameraInput = FindObjectOfType<CameraInputScript>();
     }
 
     public void CheckIfClueCaptured()
     {
-        _viewportCoords = _mainCamera.WorldToViewportPoint(transform.position);
-        if(IsClueDetectionEnabled && _mainCamera.fieldOfView < MaxFOV)
+        Vector3 viewPos = _mainCamera.WorldToViewportPoint(transform.position);
+        // If zoom in close enough while photographing, then the clue is considered detected
+        if(IsClueDetectionEnabled && _mainCamera.fieldOfView < MaxDetectFOV)
         {
-            if (_viewportCoords.x > _cameraInput.EvidenceDetectArea/2 && _viewportCoords.x < (1 - _cameraInput.EvidenceDetectArea/2) &&
-                _viewportCoords.y > _cameraInput.EvidenceDetectArea/2 && _viewportCoords.y < (1 - _cameraInput.EvidenceDetectArea/2))
+            float extraRange = (1f - EvidenceDetectArea) / 2f;
+            if (extraRange <= viewPos.x  && viewPos.x <= (1f - extraRange) &&
+               extraRange <= viewPos.y && viewPos.y <= (1f - extraRange))
             {
+                _gameManager.FindClue(viewPos, gameObject.name);
                 Debug.Log("Clue '" + gameObject.name + "' captured");
             }
         }
