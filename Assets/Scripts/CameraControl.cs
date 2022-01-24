@@ -12,7 +12,9 @@ public class CameraControl : MonoBehaviour
     public float MinFOV;
     public float MaxFOV;
 
+    GameManager _gameManager;
     Camera _mainCamera;
+
     Vector3 _camRot;
     Vector3 _camPos;
     float _camFOV;
@@ -20,8 +22,10 @@ public class CameraControl : MonoBehaviour
     Vector3 _camInitialRot;
     float _camInitialFOV;
 
+
     private void Start()
     {
+        _gameManager = FindObjectOfType<GameManager>();
         _mainCamera = Camera.main;
 
         _camPos = transform.position;
@@ -43,7 +47,13 @@ public class CameraControl : MonoBehaviour
             _camFOV = _camInitialFOV;
             return;
         }
-   
+        // If not in shoot state, it is not allowed to operate the camera.
+        if(_gameManager.GetGameState() != GameState.Shoot)
+        {
+            return;
+        }
+
+        // If in shoot state, it is free to go.
         // Set new rotation
         float offset_r_y = Input.GetAxis("Mouse X");
         float offset_r_x = Input.GetAxis("Mouse Y");

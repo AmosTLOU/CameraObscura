@@ -11,23 +11,26 @@ public class ClueScript : MonoBehaviour
     [Range(0, 1)]
     public float EvidenceDetectArea;
 
-    Camera _mainCamera;
-    Vector3 _viewPos;
+    GameManager _gameManager;
+    Camera _mainCamera;    
 
     void Start()
     {
+        _gameManager = FindObjectOfType<GameManager>();
         _mainCamera = Camera.main;
     }
 
     public void CheckIfClueCaptured()
     {
-        _viewPos = _mainCamera.WorldToViewportPoint(transform.position);
+        Vector3 viewPos = _mainCamera.WorldToViewportPoint(transform.position);
+        // If zoom in close enough while photographing, then the clue is considered detected
         if(IsClueDetectionEnabled && _mainCamera.fieldOfView < MaxDetectFOV)
         {
-            float extraRange = (1.0f - EvidenceDetectArea) / 2.0f;
-            if (extraRange <= _viewPos.x  && _viewPos.x <= (1.0f - extraRange) &&
-               extraRange <= _viewPos.y && _viewPos.y <= (1.0f - extraRange))
+            float extraRange = (1f - EvidenceDetectArea) / 2f;
+            if (extraRange <= viewPos.x  && viewPos.x <= (1f - extraRange) &&
+               extraRange <= viewPos.y && viewPos.y <= (1f - extraRange))
             {
+                _gameManager.FindClue(viewPos, gameObject.name);
                 Debug.Log("Clue '" + gameObject.name + "' captured");
             }
         }
