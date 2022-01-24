@@ -11,6 +11,10 @@ public class CameraControl : MonoBehaviour
     public float SpeedRotateZ;
     public float MinFOV;
     public float MaxFOV;
+    public bool IsKbMouseEnabled;
+
+    [SerializeField]
+    InputHandler inputHandler;
 
     GameManager _gameManager;
     Camera _mainCamera;
@@ -55,13 +59,13 @@ public class CameraControl : MonoBehaviour
 
         // If in shoot state, it is free to go.
         // Set new rotation
-        float offset_r_y = Input.GetAxis("Mouse X");
-        float offset_r_x = Input.GetAxis("Mouse Y");
-        float offset_r_z = Input.GetAxis("Fire1");
-        offset_r_z -= Input.GetAxis("Fire2");
+        var rotationValues = inputHandler.GetRotationValues();
+        float offset_r_y = IsKbMouseEnabled ? Input.GetAxis("Mouse X") : rotationValues.x;
+        float offset_r_x = IsKbMouseEnabled ? Input.GetAxis("Mouse Y") : rotationValues.y;
+        float offset_r_z = IsKbMouseEnabled ? (Input.GetAxis("Fire1") - Input.GetAxis("Fire2")) : 0;
         _camRot.x -= SpeedRotateXY * offset_r_x * Time.deltaTime;
         _camRot.y += SpeedRotateXY * offset_r_y * Time.deltaTime;
-        _camRot.z -= SpeedRotateZ * offset_r_z * Time.deltaTime;
+        //_camRot.z -= SpeedRotateZ * offset_r_z * Time.deltaTime;
 
         // Set new position
         float offset_pos_x = Input.GetAxis("Horizontal");
