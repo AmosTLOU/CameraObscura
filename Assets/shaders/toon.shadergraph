@@ -879,8 +879,6 @@
         "m_GuidSerialized": "79c30db1-938c-414b-b3c1-e27c74db1fdd"
     },
     "m_Name": "toonramp",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "toonramp",
     "m_DefaultReferenceName": "toonramp",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
@@ -1120,8 +1118,6 @@
         "m_GuidSerialized": "02b09764-6c74-4399-9b18-88c1dd1302fc"
     },
     "m_Name": "scale",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "scale",
     "m_DefaultReferenceName": "scale",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
