@@ -152,8 +152,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.8584906, g: 0.2713154, b: 0.781147, a: 1}
-  m_Intensity: 500
-  m_Range: 10
+  m_Intensity: 100
+  m_Range: 12.46
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -210,7 +210,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 104900103}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 549.95, y: -208, z: 314.24}
+  m_LocalPosition: {x: 552.24, y: -204.85, z: 314.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -794,7 +794,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - shading_gradient:
-        m_Texture: {fileID: 2800000, guid: 287fb67318328c346bd941394e19a957, type: 3}
+        m_Texture: {fileID: 2800000, guid: b05c4e89d681b2b4da2b5fb21db11daf, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - toonramp:
@@ -844,7 +844,7 @@ Material:
     - scale: 0.57
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.30496866, g: 0.13207549, b: 1, a: 1}
+    - _Color: {r: 1, g: 0, b: 0.11719704, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _L1_color: {r: 2.170677, g: 2.170677, b: 2.170677, a: 0.04341354}
     - _L1_dir: {r: 0.8599487, g: -0.48198834, b: -0.1678555, a: 0}
@@ -1717,8 +1717,8 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_color: {r: 4.860871, g: 1.5362185, b: 4.4229426, a: 0.11324227}
-    - _L1_dir: {r: -0.553364, g: 0.5343036, b: -0.63898975, a: 0}
+    - _L1_color: {r: 0.9295414, g: 0.29377013, b: 0.8457967, a: 0.10827625}
+    - _L1_dir: {r: -0.11284456, g: 0.8586048, b: -0.5000639, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
 --- !u!1001 &1621631749
