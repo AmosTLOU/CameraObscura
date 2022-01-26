@@ -210,7 +210,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 104900103}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 528.67, y: -207.28, z: 306.658}
+  m_LocalPosition: {x: 522.45, y: -209.41, z: 298.415}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1295,7 +1295,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 945808274}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 517.85, y: -209.84, z: 298.06552}
+  m_LocalPosition: {x: 518.749, y: -207.88, z: 298.06552}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2344,10 +2344,10 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_color: {r: 0, g: 0.19749598, b: 0.010583303, a: 0.26688644}
-    - _L1_dir: {r: -0.8809211, g: -0.47062126, b: 0.049936417, a: 0}
-    - _L2_color: {r: 0.008062769, g: 0.002548139, b: 0.007336374, a: 0.010612199}
-    - _L2_dir: {r: 0.6674021, g: 0.08448167, b: 0.7398901, a: 0}
+    - _L1_color: {r: 0.44618127, g: 0.14101009, b: 0.4059837, a: 0.5872628}
+    - _L1_dir: {r: 0.80415326, g: -0.5408935, b: 0.24651934, a: 0}
+    - _L2_color: {r: 0, g: 0.3578415, b: 0.019175809, a: 0.48356956}
+    - _L2_dir: {r: -0.9778203, g: 0.19352938, b: 0.08008724, a: 0}
     - _L3_color: {r: 0, g: 0, b: 0, a: 1}
     - _L3_dir: {r: 0, g: 1, b: 0, a: 0}
     - _L4_color: {r: 0, g: 0, b: 0, a: 1}

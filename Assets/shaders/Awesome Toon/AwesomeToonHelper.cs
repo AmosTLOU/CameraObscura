@@ -31,7 +31,7 @@ namespace AwesomeToon {
         [SerializeField] Material material = null;
         [SerializeField] bool instanceMaterial = true;
         [SerializeField] Vector3 meshCenter = Vector3.zero;
-        [SerializeField] int maxLights = 6;
+        [SerializeField] int maxLights = 6; //number of lights controller
 
         [Header("Recieve Shadow Check")]
         [SerializeField] bool raycast = true;
