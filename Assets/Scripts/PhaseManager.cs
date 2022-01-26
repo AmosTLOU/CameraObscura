@@ -5,7 +5,7 @@ using UnityEngine.Assertions;
 
 public enum Phase
 {
-    // Following 2 doesn't represent an actual phase, just an indicator
+    // NullPhase/StartOfEnum/EndOfEnum don't represent an actual phase, just an indicator
     NullPhase,
     StartOfEnum,
     Killing1,
@@ -24,7 +24,6 @@ public enum Phase
     Killing3,
     Flee3,
     Room3,
-    // Following doesn't represent an actual phase, just an indicator
     EndOfEnum
 }
 
