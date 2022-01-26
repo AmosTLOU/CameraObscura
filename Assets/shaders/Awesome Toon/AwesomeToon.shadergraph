@@ -3696,7 +3696,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"70cd2297ad6116c4f80043b3b870a6cb\",\"type\":3}}",
+        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"5eb241563b46bf7418a57654aac91b4a\",\"type\":3}}",
         "m_Guid": ""
     },
     "m_Modifiable": true,
@@ -8649,7 +8649,7 @@
     ],
     "synonyms": [],
     "m_Precision": 0,
-    "m_PreviewExpanded": true,
+    "m_PreviewExpanded": false,
     "m_PreviewMode": 0,
     "m_CustomColors": {
         "m_SerializableColors": []
