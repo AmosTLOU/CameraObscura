@@ -6,6 +6,7 @@ public class ClueScript : MonoBehaviour
 {
     public bool IsClueDetectionEnabled;
     public float MaxDetectFOV;
+    public Phase PhaseBelongTo;
     // Defines how close the evidence should be to center of the screen for detection
     // 0 -> must be at the center; 1 -> okay if close to the edges 
     [Range(0, 1)]
@@ -24,7 +25,7 @@ public class ClueScript : MonoBehaviour
     {
         Vector3 viewPos = _mainCamera.WorldToViewportPoint(transform.position);
         // If zoom in close enough while photographing, then the clue is considered detected
-        if(IsClueDetectionEnabled && _mainCamera.fieldOfView < MaxDetectFOV)
+        if(IsClueDetectionEnabled && _mainCamera.fieldOfView < MaxDetectFOV && PhaseBelongTo <= _gameManager.GetPhase())
         {
             float extraRange = (1f - EvidenceDetectArea) / 2f;
             if (extraRange <= viewPos.x  && viewPos.x <= (1f - extraRange) &&

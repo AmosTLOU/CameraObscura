@@ -11,6 +11,7 @@ public class DuLNode
     public string StrName { get; set; }
     public bool HasClue { get; set; }
     public string ClueName { get; set; }
+    public Phase PhaseBelongTo { get; set; }
     public Vector3 ViewPos { get; set; }
     public DuLNode Prev { get; set; }
     public DuLNode Next { get; set; }
@@ -19,6 +20,7 @@ public class DuLNode
         StrName = i_strName;
         HasClue = false;
         ClueName = "";
+        PhaseBelongTo = Phase.Room1;
         ViewPos = Vector3.zero;
         Prev = null;
         Next = null;
@@ -33,6 +35,8 @@ public class PhotoGallery : MonoBehaviour
     public Image ImageRedCircle;
     public GameObject HintDetails;
 
+    GameManager _gameManager;
+
     float _scaleX;
     float _scaleY;
     DuLNode _headNode;
@@ -45,6 +49,8 @@ public class PhotoGallery : MonoBehaviour
 
     private void Start()
     {
+        _gameManager = FindObjectOfType<GameManager>();
+
         TextIndexOfPhoto.text = "";
         HintDetails.SetActive(false);
 
@@ -104,16 +110,16 @@ public class PhotoGallery : MonoBehaviour
             textureLoad.LoadImage(bytes);
             if (textureLoad)
             {
-                Debug.Log("Load Picture Success");
+                //Debug.Log("Load Picture Success");
                 ImageDisplay.texture = textureLoad;
             }
             else
             {
-                Debug.Log("Load Picture Failure");
+                //Debug.Log("Load Picture Failure");
                 return;
             }
             TextIndexOfPhoto.text = (index + 1) + " / " + _cntPhoto;
-            if (node.HasClue)
+            if (node.HasClue && node.PhaseBelongTo <= _gameManager.GetPhase())
             {
                 TextHintMessage.gameObject.SetActive(true);
                 ImageRedCircle.gameObject.SetActive(true);
@@ -150,7 +156,7 @@ public class PhotoGallery : MonoBehaviour
         Show(_curNode, _curIndex);
     }
 
-    public void AddPrompt(Vector3 viewPos, string clueName)
+    public void AddPromptToPhoto(Vector3 viewPos, string clueName)
     {
         if(_tailNode == null)
         {

@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
 {
     public Canvas CanvasShoot;
     public Canvas CanvasGallery;
-    public PhotoGallery InstancePhotoGallery;
     public GameEvent CameraCaptureEvent;
     public float TimeCapture;
     public AudioSource AudioPlayer;
@@ -24,15 +23,21 @@ public class GameManager : MonoBehaviour
 
     Camera _mainCamera;
     GameState _gameState;
+    PhaseManager _phaseManager;
+    PhotoGallery _photoGallery;
     float _lastCaptureTime;
     bool _justTaken;
 
     void Start()
     {
+        _mainCamera = Camera.main;
         _gameState = GameState.Shoot;
+        _phaseManager = FindObjectOfType<PhaseManager>();
+        _photoGallery = FindObjectOfType<PhotoGallery>();
+
         _lastCaptureTime = float.NegativeInfinity;
         _justTaken = false;
-        _mainCamera = Camera.main;
+        
         VideoPlayer.gameObject.SetActive(false);
     }
 
@@ -45,11 +50,11 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.P))
             {
                 _gameState = GameState.Gallery;
-                InstancePhotoGallery.EnterGallery();
+                _photoGallery.EnterGallery();
                 CanvasShoot.gameObject.SetActive(false);
                 CanvasGallery.gameObject.SetActive(true);
             }
-            // Capture
+            // Capture/Flash
             else if (Input.GetKeyDown(KeyCode.Space))
             {
                 if (TimeCapture + _lastCaptureTime < Time.time)
@@ -57,6 +62,14 @@ public class GameManager : MonoBehaviour
                     _gameState = GameState.Shooting;
                     CanvasShoot.gameObject.SetActive(false);
                     _lastCaptureTime = Time.time;
+                    if(_phaseManager.GetPhase() == Phase.AboutToKill2)
+                    {
+                        _phaseManager.WaitToMovePhaseForward(Phase.Flee2, 0f);
+                    }
+                    else if (_phaseManager.GetPhase() == Phase.AboutToKill3)
+                    {
+                        _phaseManager.WaitToMovePhaseForward(Phase.Flee3, 0f);
+                    }
                 }                
             }
         }
@@ -68,7 +81,7 @@ public class GameManager : MonoBehaviour
                 AudioPlayer.clip = SFXClick;
                 AudioPlayer.Play();
                 VideoPlayer.gameObject.SetActive(true);
-                InstancePhotoGallery.Capture();
+                _photoGallery.Capture();
                 CameraCaptureEvent.Raise();
                 _justTaken = true;
             }
@@ -93,17 +106,17 @@ public class GameManager : MonoBehaviour
             // Review details of the clue if there is any
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                InstancePhotoGallery.OpenOrCloseDetails();
+                _photoGallery.OpenOrCloseDetails();
             }
             // Scroll pictures, left-ward
             else if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                InstancePhotoGallery.ShowPrevPhoto();
+                _photoGallery.ShowPrevPhoto();
             }
             // Scroll pictures, right-ward
             else if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                InstancePhotoGallery.ShowNextPhoto();
+                _photoGallery.ShowNextPhoto();
             }
         }
     }
@@ -115,6 +128,27 @@ public class GameManager : MonoBehaviour
 
     public void FindClue(Vector3 viewPos, string clueName)
     {
-        InstancePhotoGallery.AddPrompt(viewPos, clueName);
+        _photoGallery.AddPromptToPhoto(viewPos, clueName);
+        if (_phaseManager.GetProgress() == 1f)
+            return;
+        float progress = _phaseManager.UpdateProgress(clueName);
+        if (progress == 1f)
+        {
+            // Pop up prompts
+            GameObject GoPromptsText = CanvasShoot.gameObject.transform.Find("PromptAfterClearingOnePhase").gameObject;
+            StartCoroutine(LetGoAppearForAWhile(GoPromptsText, 7f));
+        }
+    }
+
+    public Phase GetPhase()
+    {
+        return _phaseManager.GetPhase();
+    }
+
+    IEnumerator LetGoAppearForAWhile(GameObject go, float timeAppearing)
+    {
+        go.SetActive(true);
+        yield return new WaitForSeconds(timeAppearing);
+        go.SetActive(false);
     }
 }
