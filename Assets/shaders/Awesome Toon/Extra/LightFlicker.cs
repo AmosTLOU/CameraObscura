@@ -30,6 +30,7 @@ public class LightFlicker : MonoBehaviour {
     }
 
     void Randomize() {
+        
         targetValue = Random.insideUnitSphere;
         randomSpeed = Random.Range(10f, 40f) * speed;
     }
