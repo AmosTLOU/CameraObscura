@@ -84,13 +84,16 @@ public class PhaseManager : MonoBehaviour
         //Flee3,
         //Room3,
 
+
+        Debug.Log("Phase is " + _phase);
+
         if (_onTransition)
             return;
 
         if (_phase == Phase.Killing1)
-            WaitToMovePhaseForward(Phase.Room1, 1f);
+            WaitToMovePhaseForward(Phase.Room1, 5f);
         else if (_phase == Phase.KillerMoveTo2)
-            WaitToMovePhaseForward(Phase.AboutToKill2, 30f);
+            WaitToMovePhaseForward(Phase.AboutToKill2, 5f);
         // Special Situation. May be interrupted, so we cannot use IEnumerator here
         else if (_phase == Phase.AboutToKill2)
         {
@@ -158,7 +161,7 @@ public class PhaseManager : MonoBehaviour
         _progress = 1f * _cntCluesFound / _cntTotalClues;
         if(_cntCluesFound == _cntTotalClues)
         {
-            WaitToMovePhaseForward(_phase+1, 60f);
+            WaitToMovePhaseForward(_phase+1, 5f);
 
             // assgin 1f to it directly to avoid the float accuracy problem
             _progress = 1f;
