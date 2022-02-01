@@ -855,6 +855,7 @@ MonoBehaviour:
   AudioPlayer: {fileID: 1542755846}
   SFXClick: {fileID: 8300000, guid: 1ae322d2a82bed24bb83c50c48c9494c, type: 3}
   VideoPlayer: {fileID: 921005401}
+  inputHandler: {fileID: 1707601688}
 --- !u!4 &584459381
 Transform:
   m_ObjectHideFlags: 0
@@ -3195,6 +3196,9 @@ MonoBehaviour:
   distance: 0
   isFlashButtonDown: 0
   isShutterButtonDown: 0
+  isGalleryButtonDown: 0
+  isLeftButtonDown: 0
+  isRightButtonDown: 0
 --- !u!4 &1707601689
 Transform:
   m_ObjectHideFlags: 0
