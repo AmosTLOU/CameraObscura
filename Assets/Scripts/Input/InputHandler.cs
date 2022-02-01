@@ -9,8 +9,11 @@ public class InputHandler : MonoBehaviour
     [SerializeField] private float currentRoll = 0f;
     [SerializeField] private float currentYaw = 0f;
     [SerializeField] private float distance = 0f;
-    [SerializeField] private bool isFlashButtonDown = false;
-    [SerializeField] private bool isShutterButtonDown = false;
+    public bool isFlashButtonDown = false;
+    public bool isShutterButtonDown = false;
+    public bool isGalleryButtonDown = false;
+    public bool isLeftButtonDown = false;
+    public bool isRightButtonDown = false;
 
     private float prevPitch, prevRoll, prevYaw, prevDistance;
 
@@ -20,6 +23,15 @@ public class InputHandler : MonoBehaviour
         port.Open();
         port.ReadTimeout = 1;
         port.NewLine = "\n";
+    }
+
+    void FixedUpdate()
+    {
+        isFlashButtonDown = false;
+        isGalleryButtonDown = false;
+        isShutterButtonDown = false;
+        isLeftButtonDown = false;
+        isRightButtonDown = false;
     }
 
     void Update()
@@ -56,11 +68,23 @@ public class InputHandler : MonoBehaviour
             case "Button":
                 if(inputMeta[1] == "1")
                 {
-                    isFlashButtonDown = true;
+                    isShutterButtonDown = true;
                 }
                 if(inputMeta[1] == "2")
                 {
-                    isShutterButtonDown = true;
+                    isFlashButtonDown = true;
+                }
+                if(inputMeta[1] == "3")
+                {
+                    isRightButtonDown = true;
+                }
+                if(inputMeta[1] == "4")
+                {
+                    isGalleryButtonDown = true;
+                }
+                if(inputMeta[1] == "5")
+                {
+                    isLeftButtonDown = true;
                 }
                 break;
             case "Pitch":
