@@ -8,22 +8,33 @@ public enum Phase
     // NullPhase/StartOfEnum/EndOfEnum don't represent an actual phase, just an indicator
     NullPhase,
     StartOfEnum,
+
+    //Killing1,
+    //Room1,
+    //KillerMoveTo2,
+    //// The phase when players can stop the killer by flashlight
+    //AboutToKill2,
+    //// Only one of the following 2 would be chosen
+    //Killing2,
+    //Flee2,
+    //Room2,
+    //KillerMoveTo3,
+    //// The phase when players can stop the killer by flashlight
+    //AboutToKill3,
+    //// Only one of the following 2 would be chosen
+    //Killing3,
+    //Flee3,
+    //Room3,
+
+    Opening,
     Killing1,
     Room1,
-    KillerMoveTo2,
-    // The phase when players can stop the killer by flashlight
-    AboutToKill2,
-    // Only one of the following 2 would be chosen
-    Killing2,
-    Flee2,
+    Tran1_2,
     Room2,
-    KillerMoveTo3,
-    // The phase when players can stop the killer by flashlight
-    AboutToKill3,
-    // Only one of the following 2 would be chosen
-    Killing3,
-    Flee3,
+    Tran2_3,
     Room3,
+    Killing3,
+
     EndOfEnum
 }
 
@@ -50,7 +61,7 @@ public class PhaseManager : MonoBehaviour
 
     private void Start()
     {
-        _phase = Phase.Killing1;
+        _phase = Phase.Opening;
         _indexRoom = 0;
         _progress = 0f;
         if(_indexRoom < CluesList.Length)
@@ -71,55 +82,59 @@ public class PhaseManager : MonoBehaviour
 
     private void Update()
     {
+        //Opening,
         //Killing1,
         //Room1,
-        //KillerMoveTo2,
-        //AboutToKill2,
-        //Killing2,
-        //Flee2,
+        //Tran1_2,
         //Room2,
-        //KillerMoveTo3,
-        //AboutToKill3,
-        //Killing3,
-        //Flee3,
+        //Tran2_3,
         //Room3,
-
+        //Killing3,
 
         Debug.Log("Phase is " + _phase);
 
         if (_onTransition)
             return;
 
-        if (_phase == Phase.Killing1)
-            WaitToMovePhaseForward(Phase.Room1, 5f);
-        else if (_phase == Phase.KillerMoveTo2)
-            WaitToMovePhaseForward(Phase.AboutToKill2, 5f);
-        // Special Situation. May be interrupted, so we cannot use IEnumerator here
-        else if (_phase == Phase.AboutToKill2)
-        {
-            if (_time_AboutToKill_begin == -1f)
-                _time_AboutToKill_begin = Time.time;
-            if (_time_AboutToKill + _time_AboutToKill_begin < Time.time)
-                WaitToMovePhaseForward(Phase.Killing2, 0f);
-        }
-        else if (_phase == Phase.Killing2)
-            WaitToMovePhaseForward(Phase.Room2, 5f);
-        else if (_phase == Phase.Flee2)
-            WaitToMovePhaseForward(Phase.Room2, 5f);
-        else if (_phase == Phase.KillerMoveTo3)
-            WaitToMovePhaseForward(Phase.AboutToKill3, 30f);
-        // Special Situation. May be interrupted, so we cannot use IEnumerator here
-        else if (_phase == Phase.AboutToKill3)
-        {
-            if (_time_AboutToKill_begin == -1f)
-                _time_AboutToKill_begin = Time.time;
-            if (_time_AboutToKill + _time_AboutToKill_begin < Time.time)
-                WaitToMovePhaseForward(Phase.Killing3, 0f);
-        }
-        else if (_phase == Phase.Killing3)
-            WaitToMovePhaseForward(Phase.Room3, 5f);
-        else if (_phase == Phase.Flee3)
-            WaitToMovePhaseForward(Phase.Room3, 5f);
+        //if (_phase == Phase.Killing1)
+        //    WaitToMovePhaseForward(Phase.Room1, 5f);
+        //else if (_phase == Phase.KillerMoveTo2)
+        //    WaitToMovePhaseForward(Phase.AboutToKill2, 5f);
+        //// Special Situation. May be interrupted, so we cannot use IEnumerator here
+        //else if (_phase == Phase.AboutToKill2)
+        //{
+        //    if (_time_AboutToKill_begin == -1f)
+        //        _time_AboutToKill_begin = Time.time;
+        //    if (_time_AboutToKill + _time_AboutToKill_begin < Time.time)
+        //        WaitToMovePhaseForward(Phase.Killing2, 0f);
+        //}
+        //else if (_phase == Phase.Killing2)
+        //    WaitToMovePhaseForward(Phase.Room2, 5f);
+        //else if (_phase == Phase.Flee2)
+        //    WaitToMovePhaseForward(Phase.Room2, 5f);
+        //else if (_phase == Phase.KillerMoveTo3)
+        //    WaitToMovePhaseForward(Phase.AboutToKill3, 30f);
+        //// Special Situation. May be interrupted, so we cannot use IEnumerator here
+        //else if (_phase == Phase.AboutToKill3)
+        //{
+        //    if (_time_AboutToKill_begin == -1f)
+        //        _time_AboutToKill_begin = Time.time;
+        //    if (_time_AboutToKill + _time_AboutToKill_begin < Time.time)
+        //        WaitToMovePhaseForward(Phase.Killing3, 0f);
+        //}
+        //else if (_phase == Phase.Killing3)
+        //    WaitToMovePhaseForward(Phase.Room3, 5f);
+        //else if (_phase == Phase.Flee3)
+        //    WaitToMovePhaseForward(Phase.Room3, 5f);
+
+
+        if (_phase == Phase.Opening)
+            WaitToMovePhaseForward(_phase+1, 3f);
+        else if (_phase == Phase.Tran1_2)
+            WaitToMovePhaseForward(_phase+1, 5f);
+        else if (_phase == Phase.Tran2_3)
+            WaitToMovePhaseForward(_phase + 1, 5f);
+    
     }
     
     public Phase GetPhase()
@@ -184,8 +199,8 @@ public class PhaseManager : MonoBehaviour
         // The function of triggering game events(like killer exit, killer killing) could be added here
         _phase = nextPhase;
         _onTransition = false;
+        
 
-       
         bool roomChanged = true;
         if (_phase == Phase.Room1)
             _indexRoom = 0;

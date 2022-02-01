@@ -62,14 +62,21 @@ public class GameManager : MonoBehaviour
                     _gameState = GameState.Shooting;
                     CanvasShoot.gameObject.SetActive(false);
                     _lastCaptureTime = Time.time;
-                    if(_phaseManager.GetPhase() == Phase.AboutToKill2)
+
+                    //if(_phaseManager.GetPhase() == Phase.AboutToKill2)
+                    //{
+                    //    _phaseManager.WaitToMovePhaseForward(Phase.Flee2, 0f);
+                    //}
+                    //else if (_phaseManager.GetPhase() == Phase.AboutToKill3)
+                    //{
+                    //    _phaseManager.WaitToMovePhaseForward(Phase.Flee3, 0f);
+                    //}
+
+                    if (_phaseManager.GetPhase() == Phase.Killing1)
                     {
-                        _phaseManager.WaitToMovePhaseForward(Phase.Flee2, 0f);
+                        _phaseManager.WaitToMovePhaseForward(Phase.Room1, 0f);
                     }
-                    else if (_phaseManager.GetPhase() == Phase.AboutToKill3)
-                    {
-                        _phaseManager.WaitToMovePhaseForward(Phase.Flee3, 0f);
-                    }
+                    
                 }                
             }
         }

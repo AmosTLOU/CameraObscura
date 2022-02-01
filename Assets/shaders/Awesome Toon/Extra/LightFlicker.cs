@@ -8,6 +8,7 @@ public class LightFlicker : MonoBehaviour {
     [SerializeField] float amountRange = 0.6f;
     [SerializeField] float amountPos = 0.3f;
     [SerializeField] float speed = 1f;
+    [SerializeField] AnimationCurve flickerCurve;
 
     // State
     float startIntensity;
@@ -47,5 +48,7 @@ public class LightFlicker : MonoBehaviour {
         light.intensity = startIntensity + currentValue.x * amountIntensity;
         light.range = startRange + currentValue.y * amountRange;
         transform.position = startPos + currentValue * amountPos;
+
+
     }
 }
