@@ -133,8 +133,7 @@ public class PhaseManager : MonoBehaviour
         else if (_phase == Phase.Tran1_2)
             WaitToMovePhaseForward(_phase+1, 5f);
         else if (_phase == Phase.Tran2_3)
-            WaitToMovePhaseForward(_phase + 1, 5f);
-    
+            WaitToMovePhaseForward(_phase + 1, 5f);    
     }
     
     public Phase GetPhase()

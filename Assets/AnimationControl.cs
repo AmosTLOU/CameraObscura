@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class killermove : MonoBehaviour
+public class AnimationControl : MonoBehaviour
 {
 
     public GameObject[] points;
+    public Transform KillerTransform;
+    public Animator KillerAnimator;
+    public Animator VictimAnimator;
     //float rotspeed;ef
-    public float speed;
-    public int a;
+    public float Speed;
+    public int A;
 
     PhaseManager _phaseManager;
-    Animator _animator;
+    
     int current = 0;
     float radius = 0.5f;
 
@@ -19,7 +22,6 @@ public class killermove : MonoBehaviour
     private void Start()
     {
         _phaseManager = FindObjectOfType<PhaseManager>();
-        _animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -81,55 +83,53 @@ public class killermove : MonoBehaviour
         //    a = -90;
         //}
 
-            ////from here this is the next run sequence after the clue 2i.e from room 2 to 3
+        ////from here this is the next run sequence after the clue 2i.e from room 2 to 3
 
-            //if (current == 13)
-            //{
-            //    a = 90;
-            //}
-            //if (current == 14)
-            //{
-            //    a = 180;
-            //}
-            //if (current == 15)
-            //{
-            //    a = -90;
-            //}
-            //if (current == 16)
-            //{
-            //    a = 90;
-            //}
-            //if (current == 17)
-            //{
-            //    a = 90;
-            //}
-            //if (current == 18)
-            //{
-            //    a = 180;
-            //}
-            //Vector3 newRotation = new Vector3(0, a, 0);
-            //transform.eulerAngles = newRotation; 
-
-
+        //if (current == 13)
+        //{
+        //    a = 90;
+        //}
+        //if (current == 14)
+        //{
+        //    a = 180;
+        //}
+        //if (current == 15)
+        //{
+        //    a = -90;
+        //}
+        //if (current == 16)
+        //{
+        //    a = 90;
+        //}
+        //if (current == 17)
+        //{
+        //    a = 90;
+        //}
+        //if (current == 18)
+        //{
+        //    a = 180;
+        //}
+        //Vector3 newRotation = new Vector3(0, a, 0);
+        //KillerTransform.eulerAngles = newRotation; 
 
 
 
-            //transform.LookAt(points[current].transform);
-            //current++;
+        //KillerTransform.LookAt(points[current].transform);
+        //current++;
 
     }
 
     void Killing()
     {
-        _animator.SetBool("Killing", true);
-        _animator.SetBool("Running", false);
+        KillerAnimator.SetBool("Killing", true);
+        KillerAnimator.SetBool("Running", false);
     }
 
     void RunawayAfterKilling1()
     {
-        if (Vector3.Distance(points[current].transform.position, transform.position) < radius)
+        if (Vector3.Distance(points[current].transform.position, KillerTransform.position) < radius)
             current++;
-        transform.position = Vector3.MoveTowards(transform.position, points[current].transform.position, Time.deltaTime * speed);
+        KillerTransform.position = Vector3.MoveTowards(KillerTransform.position, points[current].transform.position, Time.deltaTime * Speed);
     }
 
     void TransitionBetween1and2()
