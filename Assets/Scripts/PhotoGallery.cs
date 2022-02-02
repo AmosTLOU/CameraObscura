@@ -16,11 +16,11 @@ public class DuLNode
     public DuLNode Prev { get; set; }
     public DuLNode Next { get; set; }
 
-    public DuLNode(string i_strName){
+    public DuLNode(string i_strName, Phase i_phase){
         StrName = i_strName;
         HasClue = false;
         ClueName = "";
-        PhaseBelongTo = Phase.Room1;
+        PhaseBelongTo = i_phase;
         ViewPos = Vector3.zero;
         Prev = null;
         Next = null;
@@ -80,14 +80,14 @@ public class PhotoGallery : MonoBehaviour
         ScreenCapture.CaptureScreenshot(_pathPhotos + _cntPhoto + ".png");
         if (_headNode == null)
         {
-            _headNode = new DuLNode(_cntPhoto.ToString());
+            _headNode = new DuLNode(_cntPhoto.ToString(), Phase.NullPhase);
             _tailNode = _headNode;
             _headNode.Next = _tailNode;
             _tailNode.Prev = _headNode;
         }
         else
         {
-            _tailNode.Next = new DuLNode(_cntPhoto.ToString());
+            _tailNode.Next = new DuLNode(_cntPhoto.ToString(), Phase.NullPhase);
             _tailNode.Next.Prev = _tailNode;
             _tailNode = _tailNode.Next;
             _tailNode.Next = _headNode;
@@ -156,7 +156,7 @@ public class PhotoGallery : MonoBehaviour
         Show(_curNode, _curIndex);
     }
 
-    public void AddPromptToPhoto(Vector3 viewPos, string clueName)
+    public void AddPromptToPhoto(Vector3 viewPos, string clueName, Phase phaseBelongTo)
     {
         if(_tailNode == null)
         {
@@ -166,13 +166,15 @@ public class PhotoGallery : MonoBehaviour
         _tailNode.HasClue = true;
         _tailNode.ViewPos = viewPos;
         _tailNode.ClueName = clueName;
+        _tailNode.PhaseBelongTo = phaseBelongTo;
     }
 
     public void OpenOrCloseDetails()
     {
         if (_curNode.HasClue)
         {
-            HintDetails.SetActive(!HintDetails.activeInHierarchy);
+            if(_curNode.ClueName == "Clue_Poster")
+                HintDetails.SetActive(!HintDetails.activeInHierarchy);
         }
     }
 }

@@ -74,9 +74,9 @@ public class GameManager : MonoBehaviour
                     //    _phaseManager.WaitToMovePhaseForward(Phase.Flee3, 0f);
                     //}
 
-                    if (_phaseManager.GetPhase() == Phase.Killing1)
+                    if (_phaseManager.GetPhase() == Phase.StandAfterKilling1 && _mainCamera.fieldOfView <= 10)
                     {
-                        _phaseManager.WaitToMovePhaseForward(Phase.Room1, 0f);
+                        _phaseManager.WaitToMovePhaseForward(_phaseManager.GetPhase() + 1, 0.1f);
                     }
                     
                 }                
@@ -135,9 +135,9 @@ public class GameManager : MonoBehaviour
         return _gameState;
     }
 
-    public void FindClue(Vector3 viewPos, string clueName)
+    public void FindClue(Vector3 viewPos, string clueName, Phase phaseBelongTo)
     {
-        _photoGallery.AddPromptToPhoto(viewPos, clueName);
+        _photoGallery.AddPromptToPhoto(viewPos, clueName, phaseBelongTo);
         if (_phaseManager.GetProgress() == 1f)
             return;
         float progress = _phaseManager.UpdateProgress(clueName);

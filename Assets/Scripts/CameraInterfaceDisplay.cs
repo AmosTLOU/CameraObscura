@@ -7,6 +7,7 @@ using TMPro;
 public class CameraInterfaceDisplay : MonoBehaviour
 {
     public TextMeshProUGUI TimeAndDate;
+    public TextMeshProUGUI RoomIndex;
     public Slider IndicatorZoom;
     public Slider ProgressBar;
     public CameraControl InstanceCameraControl;
@@ -25,5 +26,6 @@ public class CameraInterfaceDisplay : MonoBehaviour
         // Show the extent of zoom in/out with a slider
         IndicatorZoom.value = (InstanceCameraControl.MaxFOV - Camera.main.fieldOfView) / (InstanceCameraControl.MaxFOV - InstanceCameraControl.MinFOV);
         ProgressBar.value = _phaseManager.GetProgress();
+        RoomIndex.text = "ROOM" + (_phaseManager.GetRoomIndex() + 1);
     }
 }

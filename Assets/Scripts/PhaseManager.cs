@@ -28,6 +28,8 @@ public enum Phase
 
     Opening,
     Killing1,
+    StandAfterKilling1,
+    Flee1,
     Room1,
     Tran1_2,
     Room2,
@@ -130,6 +132,10 @@ public class PhaseManager : MonoBehaviour
 
         if (_phase == Phase.Opening)
             WaitToMovePhaseForward(_phase+1, 3f);
+        else if (_phase == Phase.Killing1)
+            WaitToMovePhaseForward(_phase + 1, 3f);
+        else if (_phase == Phase.Flee1)
+            WaitToMovePhaseForward(_phase + 1, 2f);
         else if (_phase == Phase.Tran1_2)
             WaitToMovePhaseForward(_phase+1, 5f);
         else if (_phase == Phase.Tran2_3)
@@ -145,6 +151,12 @@ public class PhaseManager : MonoBehaviour
     {
         return _progress;
     }
+
+    public int GetRoomIndex()
+    {
+        return _indexRoom;
+    }
+    
 
     public float UpdateProgress(string nameNewClueFound)
     {

@@ -81,52 +81,50 @@ public class killermove : MonoBehaviour
         //    a = -90;
         //}
 
-            ////from here this is the next run sequence after the clue 2i.e from room 2 to 3
+        ////from here this is the next run sequence after the clue 2i.e from room 2 to 3
 
-            //if (current == 13)
-            //{
-            //    a = 90;
-            //}
-            //if (current == 14)
-            //{
-            //    a = 180;
-            //}
-            //if (current == 15)
-            //{
-            //    a = -90;
-            //}
-            //if (current == 16)
-            //{
-            //    a = 90;
-            //}
-            //if (current == 17)
-            //{
-            //    a = 90;
-            //}
-            //if (current == 18)
-            //{
-            //    a = 180;
-            //}
-            //Vector3 newRotation = new Vector3(0, a, 0);
-            //transform.eulerAngles = newRotation; 
-
-
+        //if (current == 13)
+        //{
+        //    a = 90;
+        //}
+        //if (current == 14)
+        //{
+        //    a = 180;
+        //}
+        //if (current == 15)
+        //{
+        //    a = -90;
+        //}
+        //if (current == 16)
+        //{
+        //    a = 90;
+        //}
+        //if (current == 17)
+        //{
+        //    a = 90;
+        //}
+        //if (current == 18)
+        //{
+        //    a = 180;
+        //}
+        //Vector3 newRotation = new Vector3(0, a, 0);
+        //transform.eulerAngles = newRotation; 
 
 
-
-            //transform.LookAt(points[current].transform);
-            //current++;
+        //transform.LookAt(points[current].transform);
+        //current++;
 
     }
 
     void Killing()
     {
-        _animator.SetBool("Killing", true);
-        _animator.SetBool("Running", false);
+        _animator.SetInteger("StateIndex", 1);
+
     }
 
     void RunawayAfterKilling1()
     {
+        _animator.SetInteger("StateIndex", 2);
         if (Vector3.Distance(points[current].transform.position, transform.position) < radius)
             current++;
         transform.position = Vector3.MoveTowards(transform.position, points[current].transform.position, Time.deltaTime * speed);
@@ -141,6 +139,7 @@ public class killermove : MonoBehaviour
     void TransitionBetween2and3()
     {
         // Killer runs, killer tries to kill but fails, killer flees
+
     }
 
     void Killing3()
