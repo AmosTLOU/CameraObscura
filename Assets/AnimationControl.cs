@@ -80,11 +80,11 @@ public class AnimationControl : MonoBehaviour
         }
         if (current == 2)
         {
-            a = 0;
+            a = -180;
         }
         if (current == 3)
         {
-            a = -90;
+            a = 90;
         }
         Vector3 newRotation = new Vector3(0, a, 0);
         KillerTransform.eulerAngles = newRotation;
@@ -131,19 +131,19 @@ public class AnimationControl : MonoBehaviour
         }
         if (current == 6)
         {
-            a = 0;
+            a = -180;
         }
         if (current == 7)
         {
-            a = -90;
+            a = 90;
         }
         if (current == 10)
         {
-            a = 90;
+            a = -90;
         }
         if (current == 11)
         {
-            a = 0;
+            a = -180;
         }
         Vector3 newRotation = new Vector3(0, a, 0);
         KillerTransform.eulerAngles = newRotation;
@@ -178,15 +178,15 @@ public class AnimationControl : MonoBehaviour
 
         if (current == 13)
         {
-            a = 90;
+            a = 0;
         }
         if (current == 14)
         {
-            a = 180;
+            a = 0;
         }
         if (current == 15)
         {
-            a = -90;
+            a = 90;
         }
         if (current == 16)
         {
@@ -194,11 +194,11 @@ public class AnimationControl : MonoBehaviour
         }
         if (current == 17)
         {
-            a = 90;
+            a = -90;
         }
         if (current == 18)
         {
-            a = 180;
+            a = 0;
         }
         Vector3 newRotation = new Vector3(0, a, 0);
         KillerTransform.eulerAngles = newRotation;
