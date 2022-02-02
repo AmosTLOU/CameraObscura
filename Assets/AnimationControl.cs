@@ -77,6 +77,8 @@ public class AnimationControl : MonoBehaviour
         if (current == 1)
         {
             a = 0;
+            GameObject light = GameObject.FindWithTag("Flickering_light");
+            light.GetComponent<light_flickering>().enabled = false;
         }
         if (current == 2)
         {
