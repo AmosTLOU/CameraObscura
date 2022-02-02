@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Flickering_light
+  - Flickering_light2
   layers:
   - Default
   - TransparentFX

@@ -78,7 +78,8 @@ public class AnimationControl : MonoBehaviour
         {
             a = 0;
             GameObject light = GameObject.FindWithTag("Flickering_light");
-            light.GetComponent<light_flickering>().enabled = false;
+            //light.GetComponent<light_flickering>().enabled = false;
+            light.GetComponent<Light>().intensity = 0;
         }
         if (current == 2)
         {
@@ -201,6 +202,9 @@ public class AnimationControl : MonoBehaviour
         if (current == 18)
         {
             a = 0;
+            GameObject light = GameObject.FindWithTag("Flickering_light2");
+            //light.GetComponent<light_flickering>().enabled = false;
+            light.GetComponent<Light>().intensity = 7.7f;
         }
         Vector3 newRotation = new Vector3(0, a, 0);
         KillerTransform.eulerAngles = newRotation;
