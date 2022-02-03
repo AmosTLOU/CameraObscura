@@ -145,7 +145,7 @@ public class GameManager : MonoBehaviour
         {
             // Pop up prompts
             GameObject GoPromptsText = CanvasShoot.gameObject.transform.Find("PromptAfterClearingOnePhase").gameObject;
-            StartCoroutine(LetGoAppearForAWhile(GoPromptsText, 7f));
+            //StartCoroutine(LetGoAppearForAWhile(GoPromptsText, 7f));
         }
     }
 
