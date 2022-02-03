@@ -16,10 +16,12 @@ public class InputHandler : MonoBehaviour
     public bool isRightButtonDown = false;
 
     private float prevPitch, prevRoll, prevYaw;
+    SerialPort port;
 
-    SerialPort port = new SerialPort("COM3", 115200);
     void Start()
     {
+        string portName = System.IO.File.ReadAllText("PortName.txt");
+        port = new SerialPort(portName, 115200);
         port.Open();
         port.ReadTimeout = 1;
         port.NewLine = "\n";
