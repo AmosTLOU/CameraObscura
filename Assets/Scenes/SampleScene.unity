@@ -3243,11 +3243,11 @@ MonoBehaviour:
   MaxOffsetPosX: 0.8
   MaxOffsetPosY: 0.7
   SpeedZoom: 5000
-  SpeedRotateXY: 50
+  SpeedRotateXY: 30
   SpeedRotateZ: 50
   MinFOV: 3
   MaxFOV: 24
-  IsKbMouseEnabled: 1
+  IsKbMouseEnabled: 0
   inputHandler: {fileID: 1707601688}
 --- !u!114 &963194231
 MonoBehaviour:
@@ -6308,7 +6308,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1707601687}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20b2dbb62f41d5b47849946703e0ceff, type: 3}
   m_Name: 

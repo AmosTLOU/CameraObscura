@@ -8,6 +8,7 @@ public class CameraControl : MonoBehaviour
     public float MaxOffsetPosY;
     public float SpeedZoom;
     public float SpeedRotateXY;
+    float speedRotateXYDefault;
     public float SpeedRotateZ;
     public float MinFOV;
     public float MaxFOV;
@@ -32,6 +33,8 @@ public class CameraControl : MonoBehaviour
         _gameManager = FindObjectOfType<GameManager>();
         _mainCamera = Camera.main;
 
+        speedRotateXYDefault = SpeedRotateXY;
+
         _camPos = transform.position;
         _camRot = transform.eulerAngles;
         _camFOV = _mainCamera.fieldOfView;
@@ -41,8 +44,15 @@ public class CameraControl : MonoBehaviour
         _camInitialFOV = _mainCamera.fieldOfView;
     }
 
+    float GetNormalisedZoomValue()
+    {
+        float returnValue = ((inputHandler.GetZoomValue() - 511)/512) * MaxFOV;
+        return MaxFOV - returnValue;
+    }
+
     private void Update()
     {
+        float oldCamFov = _camFOV;
         // Reset to initial status
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -74,12 +84,22 @@ public class CameraControl : MonoBehaviour
         _camPos.y = Mathf.Clamp(_camPos.y, _camInitialPos.y - MaxOffsetPosY, _camInitialPos.y + MaxOffsetPosY);
 
         // Set new FOV (zoom)
-        float offset_zoom = Input.GetAxis("Mouse ScrollWheel");
-        _camFOV -= SpeedZoom * offset_zoom * Time.deltaTime; ;
-        _camFOV = Mathf.Clamp(_camFOV, MinFOV, MaxFOV);
+        if(IsKbMouseEnabled)
+        {
+            float offset_zoom = Input.GetAxis("Mouse ScrollWheel");
+            _camFOV -= SpeedZoom * offset_zoom * Time.deltaTime; ;
+            _camFOV = Mathf.Clamp(_camFOV, MinFOV, MaxFOV);
+        }
+        else
+        {
+            _camFOV = Mathf.Clamp(GetNormalisedZoomValue(), MinFOV, MaxFOV);
+        }
 
         transform.eulerAngles = _camRot;
         transform.position = _camPos;
         Camera.main.fieldOfView = _camFOV;
+
+        if(oldCamFov != _camFOV)
+            SpeedRotateXY = speedRotateXYDefault * (_camFOV/MaxFOV);
     }
 }

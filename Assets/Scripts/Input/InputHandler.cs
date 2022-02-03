@@ -15,7 +15,7 @@ public class InputHandler : MonoBehaviour
     public bool isLeftButtonDown = false;
     public bool isRightButtonDown = false;
 
-    private float prevPitch, prevRoll, prevYaw, prevDistance;
+    private float prevPitch, prevRoll, prevYaw;
 
     SerialPort port = new SerialPort("COM3", 115200);
     void Start()
@@ -58,7 +58,7 @@ public class InputHandler : MonoBehaviour
 
     public float GetZoomValue()
     {
-        return distance-prevDistance;
+        return distance;
     }
 
     private void SetInputData(string[] inputMeta)
@@ -100,7 +100,6 @@ public class InputHandler : MonoBehaviour
                 currentYaw = float.Parse(inputMeta[1]);
                 break;
             case "Distance":
-                prevDistance = distance;
                 distance = float.Parse(inputMeta[1]);
                 break;
             default:
