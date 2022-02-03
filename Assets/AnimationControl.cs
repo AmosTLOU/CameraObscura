@@ -12,6 +12,7 @@ public class AnimationControl : MonoBehaviour
     public Animator KillerAnimator;
     public Animator Victim1Animator;
     public Animator Victim3Animator;
+    public EndScreenScript endScreenScript;
     //float rotspeed;ef
     public float speed;
     public int a;
@@ -160,6 +161,7 @@ public class AnimationControl : MonoBehaviour
         GoBloodOnWindow3.SetActive(true);
         Victim3Animator.SetInteger("StateIndex", 1);
         KillerAnimator.SetInteger("StateIndex", 4);
+        endScreenScript.StartAppearing(0);
     }
 
 

@@ -99,7 +99,7 @@ public class PhotoGallery : MonoBehaviour
     // Show a full picture
     public void Show(DuLNode node, int index)
     {
-        TextHintMessage.gameObject.SetActive(false);
+        //TextHintMessage.gameObject.SetActive(false);
         ImageRedCircle.gameObject.SetActive(false);
         HintDetails.SetActive(false);
         if (node != null && 0 <= index)
@@ -121,7 +121,7 @@ public class PhotoGallery : MonoBehaviour
             TextIndexOfPhoto.text = (index + 1) + " / " + _cntPhoto;
             if (node.HasClue && node.PhaseBelongTo <= _gameManager.GetPhase())
             {
-                TextHintMessage.gameObject.SetActive(true);
+                //TextHintMessage.gameObject.SetActive(true);
                 ImageRedCircle.gameObject.SetActive(true);
                 ImageRedCircle.rectTransform.anchoredPosition = new Vector2((2f * node.ViewPos.x - 1f) * _scaleX, (2f * node.ViewPos.y - 1f) * _scaleY);
             }            
