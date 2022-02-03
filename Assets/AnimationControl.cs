@@ -55,11 +55,12 @@ public class AnimationControl : MonoBehaviour
     IEnumerator DelayBeforeFallDown()
     {
         opening_cam.SetActive(true);    //opening
+        yield return new WaitForSeconds(2f);  //opening
         opening_cam.SetActive(false);  //opening
         main_cam.SetActive(true);  //opening
 
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(6f);
         GoBloodOnWindow1.SetActive(true);
         Victim1Animator.SetInteger("StateIndex", 1);
     }
