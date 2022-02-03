@@ -187,7 +187,10 @@ public class PhaseManager : MonoBehaviour
         _progress = 1f * _cntCluesFound / _cntTotalClues;
         if(_cntCluesFound == _cntTotalClues)
         {
-            WaitToMovePhaseForward(_phase+1, 5f);
+            if(_phase == Phase.Room1)
+                WaitToMovePhaseForward(_phase + 1, 1f);
+            else
+                WaitToMovePhaseForward(_phase+1, 5f);
 
             // assgin 1f to it directly to avoid the float accuracy problem
             _progress = 1f;

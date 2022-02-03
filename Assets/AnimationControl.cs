@@ -18,9 +18,11 @@ public class AnimationControl : MonoBehaviour
     //float rotspeed;ef
     public float speed;
     public int a;
+    public GameObject[] room1Lights;
 
     PhaseManager _phaseManager;
-    
+    AudioManager audioManager;
+
     int current = 0;
     float radius = 0.5f;
     bool _killing = false;
@@ -29,6 +31,7 @@ public class AnimationControl : MonoBehaviour
     private void Start()
     {
         _phaseManager = FindObjectOfType<PhaseManager>();
+        audioManager = FindObjectOfType<AudioManager>();
         KillerAnimator.SetInteger("StateIndex", 0);
         Victim1Animator.SetInteger("StateIndex", 0);
         GoBloodOnWindow1.SetActive(false);
@@ -59,21 +62,22 @@ public class AnimationControl : MonoBehaviour
         opening_cam.SetActive(false);  //opening
         main_cam.SetActive(true);  //opening
 
-
-        yield return new WaitForSeconds(6f);
+        KillerAnimator.SetInteger("StateIndex", 1);
+        yield return new WaitForSeconds(3.5f);
         GoBloodOnWindow1.SetActive(true);
         Victim1Animator.SetInteger("StateIndex", 1);
     }
 
     void Killing()
     {
-        KillerAnimator.SetInteger("StateIndex", 1);
+        //KillerAnimator.SetInteger("StateIndex", 1);
         
         StartCoroutine(DelayBeforeFallDown());
     }
 
     void RunawayAfterKilling1()
     {
+        audioManager.PlaySuspensePiano();
         KillerAnimator.SetInteger("StateIndex", 2);
         if (Vector3.Distance(points[current].transform.position, KillerTransform.position) < radius)
             current++;
@@ -105,6 +109,11 @@ public class AnimationControl : MonoBehaviour
     void TransitionBetween1and2()
     {
         // Flickering lights and Sound of progress
+        audioManager.PlayMysterySuspense();
+        foreach (GameObject go in room1Lights)
+        {
+            go.SetActive(false);
+        }
     }
 
 
@@ -118,6 +127,7 @@ public class AnimationControl : MonoBehaviour
 
     void TransitionBetween2and3()
     {
+        audioManager.PlayCreepyTensionBuildup(8.5f);
         if (_killing)
             return;
 
@@ -167,6 +177,7 @@ public class AnimationControl : MonoBehaviour
         KillerAnimator.SetInteger("StateIndex", 1);
         yield return new WaitForSeconds(3f);
         GoBloodOnWindow3.SetActive(true);
+        audioManager.PlayEndScream();
         Victim3Animator.SetInteger("StateIndex", 1);
         KillerAnimator.SetInteger("StateIndex", 4);
         endScreenScript.StartAppearing(0);
@@ -176,6 +187,7 @@ public class AnimationControl : MonoBehaviour
     void Killing3()
     {
         // Killing, victim died, killer face towards the player
+        audioManager.PlayHeartBeats();
         KillerAnimator.SetInteger("StateIndex", 2);
         // Killer runs, killer tries to kill but fails, killer flees
         if (Vector3.Distance(points[current].transform.position, KillerTransform.position) < radius)

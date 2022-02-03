@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Windows;
+//using UnityEngine.Windows;
+using System.IO;
 
 // Use DulNode structure to view and scroll photos
 [HideInInspector]
