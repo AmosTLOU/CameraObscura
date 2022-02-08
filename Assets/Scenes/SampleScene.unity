@@ -2087,7 +2087,7 @@ MonoBehaviour:
   CanvasShoot: {fileID: 1170374276}
   CanvasGallery: {fileID: 480585754}
   CameraCaptureEvent: {fileID: 11400000, guid: 99342eb40775c6449a64f40a345fd524, type: 2}
-  TimeCapture: 1
+  RateCapture: 1
   AudioPlayer: {fileID: 1542755846}
   SFXClick: {fileID: 8300000, guid: 1ae322d2a82bed24bb83c50c48c9494c, type: 3}
   VideoPlayer: {fileID: 921005401}
@@ -3335,7 +3335,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 24
+  field of view: 0.00001
   orthographic: 0
   orthographic size: 5
   m_Depth: -1

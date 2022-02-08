@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public Canvas CanvasShoot;
     public Canvas CanvasGallery;
     public GameEvent CameraCaptureEvent;
-    public float TimeCapture;
+    public float RateCapture;
     public AudioSource AudioPlayer;
     public AudioClip SFXClick;
     public UnityEngine.Video.VideoPlayer VideoPlayer;
@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
             // Capture/Flash
             else if (Input.GetKeyDown(KeyCode.Space) || inputHandler.isShutterButtonDown)
             {
-                if (TimeCapture + _lastCaptureTime < Time.time)
+                if (RateCapture + _lastCaptureTime < Time.time)
                 {
                     _gameState = GameState.Shooting;
                     CanvasShoot.gameObject.SetActive(false);
@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
                 CameraCaptureEvent.Raise();
                 _justTaken = true;
             }
-            if(TimeCapture + _lastCaptureTime < Time.time)
+            if(RateCapture + _lastCaptureTime < Time.time)
             {
                 _gameState = GameState.Shoot;
                 _justTaken = false;
@@ -145,7 +145,7 @@ public class GameManager : MonoBehaviour
         {
             // Pop up prompts
             GameObject GoPromptsText = CanvasShoot.gameObject.transform.Find("PromptAfterClearingOnePhase").gameObject;
-            //StartCoroutine(LetGoAppearForAWhile(GoPromptsText, 7f));
+            StartCoroutine(LetGoAppearForAWhile(GoPromptsText, 7f));
         }
     }
 
