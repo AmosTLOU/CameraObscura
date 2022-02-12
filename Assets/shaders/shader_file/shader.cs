@@ -1,266 +1,267 @@
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-//namespace AwesomeToon
-//{
-//    struct LightSet
-//    {
-//        public int id;
-//        public Light light;
-//        public Vector3 dir;
-//        public Color color;
-//        public float atten;
-//        public float inView;
+namespace AwesomeToon
+{
+    struct LightSet
+    {
+        public int id;
+        public Light light; //directioanl light dir =0
+        public Vector3 dir;
+        public Color color;
+        public float atten;
+        public float inView;
 
-//        public LightSet(Light newLight)
-//        {
-//            light = newLight;
-//            id = newLight.GetInstanceID();
-//            dir = Vector3.zero;
-//            color = Color.black;
-//            color.a = 0.01f; 
-//            atten = 0f;
-//            inView = 1.1f; // Range -0.1 to 1.1 which is clamped 0-1 for faster fading effectt
-//        }
-//    }
-
-
-
-//    [ExecuteInEditMode]
-//    public class AwesomeToonHelper : MonoBehaviour
-//    {
+        public LightSet(Light newLight)
+        {
+            light = newLight;
+            id = newLight.GetInstanceID();
+            dir = Vector3.zero;
+            color = Color.black;
+            color.a = 0.01f;
+            atten = 0f;
+            inView = 1.1f; // Range -0.1 to 1.1 which is clamped 0-1 for faster fading effectt
+        }
+    }
 
 
-//        [SerializeField] Material material = null;
-//        [SerializeField] bool instanceMaterial = true;
-//        [SerializeField] Vector3 meshCenter = Vector3.zero;
-//        [SerializeField] int maxLights = 6; //number of lights controller
 
-//        [Header("Recieve Shadow Check")]
-//        [SerializeField] bool raycast = true;
-//        [SerializeField] LayerMask raycastMask = new LayerMask();
-//        [SerializeField] float raycastFadeSpeed = 10f;
+    [ExecuteInEditMode]
+    public class shader : MonoBehaviour
+    {
 
 
-//        Vector3 posAbs;
-//        Dictionary<int, LightSet> lightSets;
+        [SerializeField] Material material = null;
+        [SerializeField] bool instanceMaterial = true;
+        [SerializeField] Vector3 meshCenter = Vector3.zero;
+        [SerializeField] int maxLights = 6; //number of lights controller
+
+        [Header("Recieve Shadow Check")]
+        [SerializeField] bool raycast = true;
+        [SerializeField] LayerMask raycastMask = new LayerMask();
+        [SerializeField] float raycastFadeSpeed = 10f;
 
 
-//        Material materialInstance;
-//        SkinnedMeshRenderer skinRenderer;
-//        MeshRenderer meshRenderer;
+        Vector3 posAbs;
+        Dictionary<int, LightSet> lightSets;
 
-//        void Start()
-//        {
-//            Init();
-//            GetLights();
-//        }
 
-//        void OnValidate()
-//        {
-//            Init();
-//            Update();
-//        }
+        Material materialInstance;
+        SkinnedMeshRenderer skinRenderer;
+        MeshRenderer meshRenderer;
 
-//        void Init()
-//        {
-//            if (!material) return;
-//            if (instanceMaterial)
-//            {
-//                materialInstance = new Material(material);
-//                materialInstance.name = "Instance of " + material.name;  //apply the materail to the object
-//            }
-//            else
-//            {
-//                materialInstance = material;
-//            }
+        void Start()
+        {
+            Init();
+            GetLights();
+        }
 
-//            skinRenderer = GetComponent<SkinnedMeshRenderer>();
-//            meshRenderer = GetComponent<MeshRenderer>();
-//            if (skinRenderer) skinRenderer.sharedMaterial = materialInstance;
-//            if (meshRenderer) meshRenderer.sharedMaterial = materialInstance;
-//        }
+        void OnValidate()
+        {
+            Init();
+            Update();
+        }
 
-//        // NOTE: If your game loads lights dynamically, this should be called to init new lights
-//        public void GetLights()
-//        {
-//            if (lightSets == null)
-//            {
-//                lightSets = new Dictionary<int, LightSet>();
-//            }
+        void Init()
+        {
+            if (!material) return;
+            if (instanceMaterial)
+            {
+                materialInstance = new Material(material);
+                materialInstance.name = "Instance of " + material.name;  //apply the materail to the object
+            }
+            else
+            {
+                materialInstance = material;
+            }
 
-//            Light[] lights = FindObjectsOfType<Light>();
-//            List<int> newIds = new List<int>();
+            skinRenderer = GetComponent<SkinnedMeshRenderer>();
+            meshRenderer = GetComponent<MeshRenderer>();
+            if (skinRenderer) skinRenderer.sharedMaterial = materialInstance;
+            if (meshRenderer) meshRenderer.sharedMaterial = materialInstance;
+        }
 
-//            // Initialise new lights
-//            foreach (Light light in lights)
-//            {
-//                int id = light.GetInstanceID();
-//                newIds.Add(id);
-//                if (!lightSets.ContainsKey(id))
-//                {
-//                    lightSets.Add(id, new LightSet(light));
-//                }
-//            }
+        // NOTE: If your game loads lights dynamically, this should be called to init new lights
+        public void GetLights()
+        {
+            if (lightSets == null)
+            {
+                lightSets = new Dictionary<int, LightSet>();
+            }
 
-//            // Remove old lights
-//            List<int> oldIds = new List<int>(lightSets.Keys);
-//            foreach (int id in oldIds)
-//            {
-//                if (!newIds.Contains(id))
-//                {
-//                    lightSets.Remove(id);
-//                }
-//            }
-//        }
+            Light[] lights = FindObjectsOfType<Light>();
+            List<int> newIds = new List<int>();
 
-//        void Update()
-//        {
-//            posAbs = transform.position + meshCenter;
+            // Initialise new lights
+            foreach (Light light in lights)
+            {
+                int id = light.GetInstanceID();
+                newIds.Add(id);
+                if (!lightSets.ContainsKey(id))
+                {
+                    lightSets.Add(id, new LightSet(light));
+                }
+            }
 
-//            // Always update lighting while in editor
-//            if (Application.isEditor && !Application.isPlaying)
-//            {
-//                GetLights();
-//            }
+            // Remove old lights
+            List<int> oldIds = new List<int>(lightSets.Keys);
+            foreach (int id in oldIds)
+            {
+                if (!newIds.Contains(id))
+                {
+                    lightSets.Remove(id);
+                }
+            }
+        }
 
-//            UpdateMaterial();
-//        }
+        void Update()
+        {
+            posAbs = transform.position + meshCenter;
 
-//        void UpdateMaterial()
-//        {
-//            if (!material) return;
+            // Always update lighting while in editor
+            if (Application.isEditor && !Application.isPlaying)
+            {
+                GetLights();
+            }
 
-//            // Refresh light data
-//            List<LightSet> sortedLights = new List<LightSet>();
-//            if (lightSets != null)
-//            {
-//                foreach (LightSet lightSet in lightSets.Values)
-//                {
-//                    sortedLights.Add(CalcLight(lightSet));
-//                }
-//            }
+            UpdateMaterial();
+        }
 
-//            // Sort lights by brightness
-//            sortedLights.Sort((x, y) => {
-//                float yBrightness = y.color.grayscale * y.atten;
-//                float xBrightness = x.color.grayscale * x.atten;
-//                return yBrightness.CompareTo(xBrightness);
-//            });
+        void UpdateMaterial()
+        {
+            if (!material) return;
 
-//            // Apply lighting
-//            int i = 1;
-//            foreach (LightSet lightSet in sortedLights)
-//            {
-//                if (i > maxLights) break;
-//                if (lightSet.atten <= Mathf.Epsilon) break;
+            // Refresh light data
+            List<LightSet> sortedLights = new List<LightSet>();
+            if (lightSets != null)
+            {
+                foreach (LightSet lightSet in lightSets.Values)
+                {
+                    sortedLights.Add(CalcLight(lightSet));
+                }
+            }
 
-//                // Use color Alpha to pass attenuation data
-//                Color color = lightSet.color;
-//                color.a = Mathf.Clamp(lightSet.atten, 0.01f, 0.99f); // UV might wrap around if attenuation is >1 or 0<
+            // Sort lights by brightness
+            sortedLights.Sort((x, y) =>
+            {
+                float yBrightness = y.color.grayscale * y.atten;
+                float xBrightness = x.color.grayscale * x.atten;
+                return yBrightness.CompareTo(xBrightness);
+            });
 
-//                materialInstance.SetVector($"_L{i}_dir", lightSet.dir.normalized);
-//                materialInstance.SetColor($"_L{i}_color", color);
-//                i++;
-//            }
+            // Apply lighting
+            int i = 1;
+            foreach (LightSet lightSet in sortedLights)
+            {
+                if (i > maxLights) break;
+                if (lightSet.atten <= Mathf.Epsilon) break;
 
-//            // Turn off the remaining light slots
-//            while (i <= maxLights)
-//            {
-//                materialInstance.SetVector($"_L{i}_dir", Vector3.up);
-//                materialInstance.SetColor($"_L{i}_color", Color.black);
-//                i++;
-//            }
+                // Use color Alpha to pass attenuation data
+                Color color = lightSet.color;
+                color.a = Mathf.Clamp(lightSet.atten, 0.01f, 0.99f); // UV might wrap around if attenuation is >1 or 0<
 
-//            // Store updated light data
-//            foreach (LightSet lightSet in sortedLights)
-//            {
-//                lightSets[lightSet.id] = lightSet;
-//            }
-//        }
+                materialInstance.SetVector($"_L{i}_dir", lightSet.dir.normalized);
+                materialInstance.SetColor($"_L{i}_color", color);
+                i++;
+            }
 
-//        LightSet CalcLight(LightSet lightSet)
-//        {
-//            Light light = lightSet.light;
-//            float inView = 1.1f;
-//            float dist;
+            // Turn off the remaining light slots
+            while (i <= maxLights)
+            {
+                materialInstance.SetVector($"_L{i}_dir", Vector3.up);
+                materialInstance.SetColor($"_L{i}_color", Color.black);
+                i++;
+            }
 
-//            if (!light.isActiveAndEnabled)
-//            {
-//                lightSet.atten = 0f;
-//                return lightSet;
-//            }
+            // Store updated light data
+            foreach (LightSet lightSet in sortedLights)
+            {
+                lightSets[lightSet.id] = lightSet;
+            }
+        }
 
-//            switch (light.type)
-//            {
-//                case LightType.Directional:
-//                    lightSet.dir = light.transform.forward * -1f;
-//                    inView = TestInView(lightSet.dir, 100f);
-//                    lightSet.color = light.color * light.intensity;
-//                    lightSet.atten = 1f;
-//                    break;
+        LightSet CalcLight(LightSet lightSet)
+        {
+            Light light = lightSet.light;
+            float inView = 1.1f;
+            float dist;
 
-//                case LightType.Point:
-//                    lightSet.dir = light.transform.position - posAbs;
-//                    dist = Mathf.Clamp01(lightSet.dir.magnitude / light.range);
-//                    inView = TestInView(lightSet.dir, lightSet.dir.magnitude);
-//                    lightSet.atten = CalcAttenuation(dist);
-//                    lightSet.color = light.color * lightSet.atten * light.intensity * 0.1f;
-//                    break;
+            if (!light.isActiveAndEnabled)
+            {
+                lightSet.atten = 0f;
+                return lightSet;
+            }
 
-//                case LightType.Spot:
-//                    lightSet.dir = light.transform.position - posAbs;
-//                    dist = Mathf.Clamp01(lightSet.dir.magnitude / light.range);
-//                    float angle = Vector3.Angle(light.transform.forward * -1f, lightSet.dir.normalized);
-//                    float inFront = Mathf.Lerp(0f, 1f, (light.spotAngle - angle * 2f) / lightSet.dir.magnitude); // More edge fade when far away from light source
-//                    inView = inFront * TestInView(lightSet.dir, lightSet.dir.magnitude);
-//                    lightSet.atten = CalcAttenuation(dist);
-//                    lightSet.color = light.color * lightSet.atten * light.intensity * 0.05f;
-//                    break;
+            switch (light.type)
+            {
+                case LightType.Directional:
+                    lightSet.dir = light.transform.forward * -1f;
+                    inView = TestInView(lightSet.dir, 100f);
+                    lightSet.color = light.color * light.intensity;
+                    lightSet.atten = 1f;
+                    break;
 
-//                default:
-//                    Debug.Log("Lighting type '" + light.type + "' not supported by Awesome Toon Helper (" + light.name + ").");
-//                    lightSet.atten = 0f;
-//                    break;
-//            }
+                case LightType.Point:
+                    lightSet.dir = light.transform.position - posAbs;
+                    dist = Mathf.Clamp01(lightSet.dir.magnitude / light.range);
+                    inView = TestInView(lightSet.dir, lightSet.dir.magnitude);
+                    lightSet.atten = CalcAttenuation(dist);
+                    lightSet.color = light.color * lightSet.atten * light.intensity * 0.1f;
+                    break;
 
-//            // Slowly fade lights on and off
-//            float fadeSpeed = (Application.isEditor && !Application.isPlaying)
-//                ? raycastFadeSpeed / 60f
-//                : raycastFadeSpeed * Time.deltaTime;
+                case LightType.Spot:
+                    lightSet.dir = light.transform.position - posAbs;
+                    dist = Mathf.Clamp01(lightSet.dir.magnitude / light.range);
+                    float angle = Vector3.Angle(light.transform.forward * -1f, lightSet.dir.normalized);
+                    float inFront = Mathf.Lerp(0f, 1f, (light.spotAngle - angle * 2f) / lightSet.dir.magnitude); // More edge fade when far away from light source
+                    inView = inFront * TestInView(lightSet.dir, lightSet.dir.magnitude);
+                    lightSet.atten = CalcAttenuation(dist);
+                    lightSet.color = light.color * lightSet.atten * light.intensity * 0.05f;
+                    break;
 
-//            lightSet.inView = Mathf.Lerp(lightSet.inView, inView, fadeSpeed);
-//            lightSet.color *= Mathf.Clamp01(lightSet.inView);
+                default:
+                    Debug.Log("Lighting type '" + light.type + "' not supported by Awesome Toon Helper (" + light.name + ").");
+                    lightSet.atten = 0f;
+                    break;
+            }
 
-//            return lightSet;
-//        }
+            // Slowly fade lights on and off
+            float fadeSpeed = (Application.isEditor && !Application.isPlaying)
+                ? raycastFadeSpeed / 60f
+                : raycastFadeSpeed * Time.deltaTime;
 
-//        float TestInView(Vector3 dir, float dist)
-//        {
-//            if (!raycast) return 1.1f;
-//            RaycastHit hit;
-//            if (Physics.Raycast(posAbs, dir, out hit, dist, raycastMask))
-//            {
-//                Debug.DrawRay(posAbs, dir.normalized * hit.distance, Color.red);
-//                return -0.1f;
-//            }
-//            else
-//            {
-//                Debug.DrawRay(posAbs, dir.normalized * dist, Color.green);
-//                return 1.1f;
-//            }
-//        }
+            lightSet.inView = Mathf.Lerp(lightSet.inView, inView, fadeSpeed);
+            lightSet.color *= Mathf.Clamp01(lightSet.inView);
 
-//        // Ref - Light Attenuation calc: https://forum.unity.com/threads/light-attentuation-equation.16006/#post-3354254
-//        float CalcAttenuation(float dist)
-//        {
-//            return Mathf.Clamp01(1.0f / (1.0f + 25f * dist * dist) * Mathf.Clamp01((1f - dist) * 5f));
-//        }
+            return lightSet;
+        }
 
-//        private void OnDrawGizmosSelected()
-//        {
-//            Gizmos.DrawWireSphere(posAbs, 0.1f);
-//        }
-//    }
-//}
+        float TestInView(Vector3 dir, float dist)
+        {
+            if (!raycast) return 1.1f;
+            RaycastHit hit;
+            if (Physics.Raycast(posAbs, dir, out hit, dist, raycastMask))
+            {
+                Debug.DrawRay(posAbs, dir.normalized * hit.distance, Color.red);
+                return -0.1f;
+            }
+            else
+            {
+                Debug.DrawRay(posAbs, dir.normalized * dist, Color.green);
+                return 1.1f;
+            }
+        }
+
+        // Ref - Light Attenuation calc: 
+        float CalcAttenuation(float dist)
+        {
+            return Mathf.Clamp01(1.0f / (1.0f + 25f * dist * dist) * Mathf.Clamp01((1f - dist) * 5f));
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.DrawWireSphere(posAbs, 0.1f);
+        }
+    }
+}
